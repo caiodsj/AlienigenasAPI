@@ -21,6 +21,11 @@ namespace AlienigenasAPI.Services
             return await _dataContext.Aliens.Where(a => a.EstaNaTerra == true).ToListAsync();
         }
 
+        public async Task<List<Alien>> GetAllAliensPorPlaneta(int idPlaneta)
+        {
+            return await _dataContext.Aliens.Where(a => a.EstaNaTerra == true && a.PlanetaOrigemId == idPlaneta).ToListAsync();
+        }
+
 
         public async Task<string> EntrarNaTerra(int id)
         {
