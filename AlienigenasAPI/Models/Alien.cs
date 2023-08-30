@@ -8,10 +8,10 @@
         public int Altura { get; set; }
         public int Idade { get; set; }
         public string CorpoDescricao { get; set; }
-        public bool IsInEarth { get; set; }
+        public bool EstaNaTerra { get; set; }
 
         public int PlanetaOrigemId { get; set; }
         public Planeta PlanetaOrigem { get; set; }
-        public List<PoderAlien> PoderesAliens { get; set; }
+        public List<PoderAlien> PoderesAlien { get; set; }
     }
 }
