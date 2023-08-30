@@ -1,8 +1,7 @@
-﻿namespace AlienigenasAPI.DTOs
+namespace AlienigenasAPI.DTOs
 {
     public class PlanetaDTO
     {
-        public int Id { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public int Populacao { get; set; }
