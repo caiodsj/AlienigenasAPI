@@ -17,7 +17,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 });
 // builder.Services.AddScoped<IAlienService, AlienService>();
 // builder.Services.AddScoped<IPlanetaService, PlanetaService>();
-// builder.Services.AddScoped<IPoderService, PoderService>();
+builder.Services.AddScoped<IPoderService, PoderService>();
 // builder.Services.AddScoped<ITerraService, TerraService>();
 
 var app = builder.Build();
