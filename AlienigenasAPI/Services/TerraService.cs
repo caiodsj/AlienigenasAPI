@@ -15,6 +15,16 @@ namespace AlienigenasAPI.Services
         {
             return await _dataContext.Aliens.Where(a => a.EstaNaTerra == true).FirstOrDefaultAsync(a => a.Id == id);
         }
+        
+        public async Task<List<Alien>> GetAlienNaTerraPorNome(string nomeAlien)
+        {
+            return await _dataContext.Aliens.Where(a => a.EstaNaTerra == true && a.Nome.Contains(nomeAlien)).ToListAsync();
+        }
+        
+        public async Task<List<Alien>> GetAlienNaTerraPorEspecie(string especie)
+        {
+            return await _dataContext.Aliens.Where(a => a.EstaNaTerra == true && a.Especie.Contains(especie)).ToListAsync();
+        }
 
         public async Task<List<Alien>> GetAllAliensDaTerra()
         {

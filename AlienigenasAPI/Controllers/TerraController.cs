@@ -34,12 +34,32 @@ namespace AlienigenasAPI.Controllers
             return Ok(alien);
         }
 
-        [HttpGet("BuscarAliensPorPlanetaId/{id}")]
+        [HttpGet("BuscarAliensPorPlanetaId/{planetaId}")]
         public async Task<ActionResult<List<Alien>>> GetAlienNaTerraPorId(int id)
         {
             var aliens = await _terraService.GetAllAliensPorPlaneta(id);
 
             if (aliens is null) { return BadRequest($"Não existe nenhum visitante desse planeta na Terra"); }
+
+            return Ok(aliens);
+        }
+        
+        [HttpGet("BuscarAliensPorEspecie/{especie}")]
+        public async Task<ActionResult<List<Alien>>> GetAlienNaTerraPorEspecie(string especie)
+        {
+            var aliens = await _terraService.GetAlienNaTerraPorEspecie(especie);
+
+            if (aliens is null) { return BadRequest($"Não existe nenhum visitante dessa especie na Terra"); }
+
+            return Ok(aliens);
+        }
+        
+        [HttpGet("BuscarAliensPorNome/{nome}")]
+        public async Task<ActionResult<List<Alien>>> GetAlienNaTerraPorId(string nome)
+        {
+            var aliens = await _terraService.GetAlienNaTerraPorNome(nome);
+
+            if (aliens is null) { return BadRequest($"Não existe nenhum visitante com esse nome na Terra"); }
 
             return Ok(aliens);
         }
