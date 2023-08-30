@@ -6,7 +6,7 @@ namespace AlienigenasAPI.Services.Interfaces
     {
         Task<List<Alien>> GetAllAliensDaTerra();
         Task<Alien> GetAlienNaTerraPorId(int id);
-        Task EntrarNaTerra(int id);
-        Task SairDaTerra(int id);
+        Task<string> EntrarNaTerra(int id);
+        Task<string> SairDaTerra(int id);
     }
 }
