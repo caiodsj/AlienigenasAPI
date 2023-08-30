@@ -49,14 +49,16 @@ namespace AlienigenasAPI.Services
             return planeta;
         }
 
-        public async Task RemovePlanetaAsync(int id)
+        public async Task<bool> DeletePlanetaAsync(int id)
         {
             var planeta = await _dataContext.Planetas.FindAsync(id);
-            if (planeta != null)
+            if (planeta == null)
             {
-                _dataContext.Planetas.Remove(planeta);
-                await _dataContext.SaveChangesAsync();
+                return false;
             }
+            _dataContext.Planetas.Remove(planeta);
+            await _dataContext.SaveChangesAsync();
+            return true;
         }
     }
 }

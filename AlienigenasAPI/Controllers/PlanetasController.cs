@@ -53,9 +53,13 @@ public class PlanetasController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> RemovePlaneta(int id)
+    public async Task<IActionResult> DeletePlaneta(int id)
     {
-        await _planetaService.RemovePlanetaAsync(id);
+        var planetaApagado = await _planetaService.DeletePlanetaAsync(id);
+        if (!planetaApagado)
+        {
+            return NotFound("Planeta não encontrado.");
+        }
         return NoContent();
     }
 }

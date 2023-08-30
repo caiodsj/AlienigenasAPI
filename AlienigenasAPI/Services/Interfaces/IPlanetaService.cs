@@ -16,6 +16,6 @@ namespace AlienigenasAPI.Services.Interfaces
         Task<Planeta> UpdatePlanetaAsync(int id,PlanetaDTO request);
 
         // delete
-        Task RemovePlanetaAsync(int id);
+        Task<bool> DeletePlanetaAsync(int id);
     }
 }
