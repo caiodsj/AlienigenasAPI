@@ -15,10 +15,10 @@ builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-// builder.Services.AddScoped<IAlienService, AlienService>();
-// builder.Services.AddScoped<IPlanetaService, PlanetaService>();
+builder.Services.AddScoped<IAlienService, AlienService>();
+builder.Services.AddScoped<IPlanetaService, PlanetaService>();
 builder.Services.AddScoped<IPoderService, PoderService>();
-// builder.Services.AddScoped<ITerraService, TerraService>();
+builder.Services.AddScoped<ITerraService, TerraService>();
 
 var app = builder.Build();
 
