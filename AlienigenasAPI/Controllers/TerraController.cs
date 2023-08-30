@@ -75,7 +75,7 @@ namespace AlienigenasAPI.Controllers
         [HttpPut("SaidaDaTerra/{id}")]
         public async Task<ActionResult<string>> SairDaTerra(int id)
         {
-            var result = await _terraService.EntrarNaTerra(id);
+            var result = await _terraService.SairDaTerra(id);
 
             return Ok(result);
         }

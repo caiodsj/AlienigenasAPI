@@ -15,12 +15,12 @@ namespace AlienigenasAPI.Services
         {
             return await _dataContext.Aliens.Where(a => a.EstaNaTerra == true).FirstOrDefaultAsync(a => a.Id == id);
         }
-        
+
         public async Task<List<Alien>> GetAlienNaTerraPorNome(string nomeAlien)
         {
             return await _dataContext.Aliens.Where(a => a.EstaNaTerra == true && a.Nome.Contains(nomeAlien)).ToListAsync();
         }
-        
+
         public async Task<List<Alien>> GetAlienNaTerraPorEspecie(string especie)
         {
             return await _dataContext.Aliens.Where(a => a.EstaNaTerra == true && a.Especie.Contains(especie)).ToListAsync();
@@ -39,35 +39,31 @@ namespace AlienigenasAPI.Services
 
         public async Task<string> EntrarNaTerra(int id)
         {
-            var result = await _dataContext.Aliens.Where(s => s.EstaNaTerra == false).FirstOrDefaultAsync(s => s.Id == id);
+            var result = await _dataContext.Aliens.FirstOrDefaultAsync(s => s.Id == id);
 
-            if (result is not null)
-            {
-                result.EstaNaTerra = true;
+            if (result is null) return "Alien não existe.";
+            if (result.EstaNaTerra) return "Alien já está na terra!";
+            result.EstaNaTerra = true;
 
-                _dataContext.Aliens.Update(result);
-                await _dataContext.SaveChangesAsync();
+            _dataContext.Aliens.Update(result);
+            await _dataContext.SaveChangesAsync();
 
-                return $"ID {id} \nData de entrada na terra: {DateTime.Now}";
-            }
+            return $"ID {id} \nData de entrada na terra: {DateTime.Now}";
 
-            return $"ID {id} esta na terra: {result.EstaNaTerra}\n ID não encotrado!";
+
         }
         public async Task<string> SairDaTerra(int id)
         {
-            var result = await _dataContext.Aliens.Where(s => s.EstaNaTerra == true).FirstOrDefaultAsync(s => s.Id == id);
+            var result = await _dataContext.Aliens.FirstOrDefaultAsync(s => s.Id == id);
 
-            if (result is not null)
-            {
-                result.EstaNaTerra = false;
+            if (result is null) return "Alien não existe.";
+            if (!result.EstaNaTerra) return "Alien não está na terra!";
+            result.EstaNaTerra = false;
 
-                _dataContext.Aliens.Update(result);
-                await _dataContext.SaveChangesAsync();
+            _dataContext.Aliens.Update(result);
+            await _dataContext.SaveChangesAsync();
 
-                return $"ID {id} \nData de saida da terra: {DateTime.Now}";
-            }
-
-            return $"ID {id} esta na terra: {result.EstaNaTerra}\n ID não encotrado!";
+            return $"ID {id} \nData de saída da terra: {DateTime.Now}";
         }
     }
 }
