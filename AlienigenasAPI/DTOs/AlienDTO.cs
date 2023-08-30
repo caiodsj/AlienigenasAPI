@@ -10,8 +10,7 @@ namespace AlienigenasAPI.DTOs
         public int Idade { get; set; }
         public string CorpoDescricao { get; set; }
         public int PlanetaOrigemId { get; set; }
-        public Planeta PlanetaOrigem { get; set; }
-        public List<PoderAlien> PoderesAliens { get; set; }
-        public bool IsInEarth { get; set; }
+        public List<int> PoderesAlien { get; set; }
+        public bool EstaNaTerra { get; set; }
     }
 }

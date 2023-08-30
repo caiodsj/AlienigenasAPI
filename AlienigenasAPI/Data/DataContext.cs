@@ -19,12 +19,13 @@ namespace AlienigenasAPI.Data
                 .HasOne(a => a.PlanetaOrigem).WithMany()
                 .HasForeignKey(a => a.PlanetaOrigemId);
 
-            modelBuilder.Entity<PoderAlien>()
-                .HasOne(pa => pa.Alien).WithMany()
+			modelBuilder.Entity<PoderAlien>()
+				.HasKey(pa => new { pa.AlienId, pa.PoderId });
+            modelBuilder.Entity<Alien>()
+                .HasMany(a => a.PoderesAlien).WithOne(pa => pa.Alien)
                 .HasForeignKey(pa => pa.AlienId);
-
-            modelBuilder.Entity<PoderAlien>()
-                .HasOne(pa => pa.Poder).WithMany()
+            modelBuilder.Entity<Poder>()
+                .HasMany(p => p.PoderesAlien).WithOne(pa => pa.Poder)
                 .HasForeignKey(pa => pa.PoderId);
         }
     }
