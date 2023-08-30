@@ -1,6 +1,4 @@
-﻿using AlienigenasAPI.Models;
-
-namespace AlienigenasAPI.DTOs
+﻿namespace AlienigenasAPI.DTOs
 {
     public class AlienDTO
     {

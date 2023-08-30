@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using AlienigenasAPI.DTOs;
-using AlienigenasAPI.Services.Interfaces;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -13,7 +12,6 @@ public class PlanetasController : ControllerBase
         _planetaService = planetaService;
     }
 
-    // POST: api/Planetas
     [HttpPost]
     public async Task<IActionResult> CreatePlanetaAsync([FromBody] PlanetaDTO request)
     {
@@ -21,7 +19,6 @@ public class PlanetasController : ControllerBase
         return CreatedAtAction("GetPlanetaPorId",new { id = planeta.Id },planeta);
     }
 
-    // GET: api/Planetas
     [HttpGet]
     public async Task<IActionResult> GetAllPlanetas()
     {
@@ -33,7 +30,6 @@ public class PlanetasController : ControllerBase
         return Ok(planetas);
     }
 
-    // GET: api/Planetas/5
     [HttpGet("{id}")]
     public async Task<IActionResult> GetPlanetaPorId(int id)
     {
@@ -45,7 +41,6 @@ public class PlanetasController : ControllerBase
         return Ok(planeta);
     }
 
-    // PUT: api/Planetas/5
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdatePlaneta(int id,[FromBody] PlanetaDTO request)
     {
@@ -57,7 +52,6 @@ public class PlanetasController : ControllerBase
         return Ok(planeta);
     }
 
-    // DELETE: api/Planetas/5
     [HttpDelete("{id}")]
     public async Task<IActionResult> RemovePlaneta(int id)
     {

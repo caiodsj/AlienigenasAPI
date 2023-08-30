@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using AlienigenasAPI.Models;
-using AlienigenasAPI.Services.Interfaces;
+﻿using AlienigenasAPI.Models;
 using AlienigenasAPI.DTOs;
 
 namespace AlienigenasAPI.Services
