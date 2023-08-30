@@ -5,10 +5,17 @@ namespace AlienigenasAPI.Services.Interfaces
 {
     public interface IPlanetaService
     {
-        Task<List<Planeta>> GetAllPlanetas();
-        Task<Planeta> GetPlanetaPorId(int id);
-        Task<Planeta> CreatePlaneta(PlanetaDTO request);
-        Task<Planeta> UpdatePlaneta(int id, PlanetaDTO request);
-        Task RemovePlaneta(int id);
+        // create
+        Task<Planeta> CreatePlanetaAsync(PlanetaDTO request);
+
+        // read
+        Task<List<Planeta>> GetAllPlanetasAsync();
+        Task<Planeta> GetPlanetaPorIdAsync(int id);
+
+        // update
+        Task<Planeta> UpdatePlanetaAsync(int id,PlanetaDTO request);
+
+        // delete
+        Task RemovePlanetaAsync(int id);
     }
 }
