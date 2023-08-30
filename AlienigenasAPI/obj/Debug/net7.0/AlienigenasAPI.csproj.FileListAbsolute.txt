@@ -74,3 +74,13 @@ D:\Usuario\Documents\Projects\C#\API\AlienigenasAPI\AlienigenasAPI\obj\Debug\net
 D:\Usuario\Documents\Projects\C#\API\AlienigenasAPI\AlienigenasAPI\obj\Debug\net7.0\AlienigenasAPI.pdb
 D:\Usuario\Documents\Projects\C#\API\AlienigenasAPI\AlienigenasAPI\obj\Debug\net7.0\AlienigenasAPI.genruntimeconfig.cache
 D:\Usuario\Documents\Projects\C#\API\AlienigenasAPI\AlienigenasAPI\obj\Debug\net7.0\ref\AlienigenasAPI.dll
+C:\DevelopmentLearning\Devs2Blu\APIs\Aula2908\Caio\AlienigenasAPI\AlienigenasAPI\obj\Debug\net7.0\AlienigenasAPI.csproj.AssemblyReference.cache
+C:\DevelopmentLearning\Devs2Blu\APIs\Aula2908\Caio\AlienigenasAPI\AlienigenasAPI\obj\Debug\net7.0\AlienigenasAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\DevelopmentLearning\Devs2Blu\APIs\Aula2908\Caio\AlienigenasAPI\AlienigenasAPI\obj\Debug\net7.0\AlienigenasAPI.AssemblyInfoInputs.cache
+C:\DevelopmentLearning\Devs2Blu\APIs\Aula2908\Caio\AlienigenasAPI\AlienigenasAPI\obj\Debug\net7.0\AlienigenasAPI.AssemblyInfo.cs
+C:\DevelopmentLearning\Devs2Blu\APIs\Aula2908\Caio\AlienigenasAPI\AlienigenasAPI\obj\Debug\net7.0\AlienigenasAPI.csproj.CoreCompileInputs.cache
+C:\DevelopmentLearning\Devs2Blu\APIs\Aula2908\Caio\AlienigenasAPI\AlienigenasAPI\obj\Debug\net7.0\AlienigenasAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\DevelopmentLearning\Devs2Blu\APIs\Aula2908\Caio\AlienigenasAPI\AlienigenasAPI\obj\Debug\net7.0\AlienigenasAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\DevelopmentLearning\Devs2Blu\APIs\Aula2908\Caio\AlienigenasAPI\AlienigenasAPI\obj\Debug\net7.0\AlienigenasAPI.dll
+C:\DevelopmentLearning\Devs2Blu\APIs\Aula2908\Caio\AlienigenasAPI\AlienigenasAPI\obj\Debug\net7.0\refint\AlienigenasAPI.dll
+C:\DevelopmentLearning\Devs2Blu\APIs\Aula2908\Caio\AlienigenasAPI\AlienigenasAPI\obj\Debug\net7.0\AlienigenasAPI.pdb
