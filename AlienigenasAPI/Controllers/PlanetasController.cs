@@ -1,65 +1,85 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using AlienigenasAPI.DTOs;
 
-[Route("api/[controller]")]
-[ApiController]
-public class PlanetasController : ControllerBase
+namespace AlienigenasAPI.Controllers
 {
-    private readonly IPlanetaService _planetaService;
-
-    public PlanetasController(IPlanetaService planetaService)
+    [Route("api/[controller]")]
+    [ApiController]
+    public class PlanetasController : ControllerBase
     {
-        _planetaService = planetaService;
-    }
+        private readonly IPlanetaService _planetaService;
 
-    [HttpPost]
-    public async Task<IActionResult> CreatePlanetaAsync([FromBody] PlanetaDTO request)
-    {
-        var planeta = await _planetaService.CreatePlanetaAsync(request);
-        return CreatedAtAction("GetPlanetaPorId",new { id = planeta.Id },planeta);
-    }
-
-    [HttpGet]
-    public async Task<IActionResult> GetAllPlanetas()
-    {
-        var planetas = await _planetaService.GetAllPlanetasAsync();
-        if (planetas == null || !planetas.Any())
+        public PlanetasController(IPlanetaService planetaService)
         {
-            return NotFound();
+            _planetaService = planetaService;
         }
-        return Ok(planetas);
-    }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetPlanetaPorId(int id)
-    {
-        var planeta = await _planetaService.GetPlanetaPorIdAsync(id);
-        if (planeta == null)
+        [HttpGet]
+        public async Task<IActionResult> GetAllPlanetas()
         {
-            return NotFound();
+            var planetas = await _planetaService.GetAllPlanetasAsync();
+            if (planetas == null || !planetas.Any())
+            {
+                return NotFound();
+            }
+            return Ok(planetas);
         }
-        return Ok(planeta);
-    }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> UpdatePlaneta(int id,[FromBody] PlanetaDTO request)
-    {
-        var planeta = await _planetaService.UpdatePlanetaAsync(id,request);
-        if (planeta == null)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetPlanetaPorId(int id)
         {
-            return NotFound();
-        }
-        return Ok(planeta);
-    }
+            var planeta = await _planetaService.GetPlanetaPorIdAsync(id);
+            if (planeta == null)
+            {
+                return NotFound(new { message = $"Planeta com o id-{id} não encontrado." });
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeletePlaneta(int id)
-    {
-        var planetaApagado = await _planetaService.DeletePlanetaAsync(id);
-        if (!planetaApagado)
-        {
-            return NotFound("Planeta não encontrado.");
+            }
+            return Ok(planeta);
         }
-        return NoContent();
+
+        [HttpGet("nome/{nome}")]
+        public async Task<IActionResult> GetAllPlanetasPorNome(string nome)
+        {
+            var planetas = await _planetaService.GetAllPlanetasPorNomeAsync(nome);
+            if (planetas == null || !planetas.Any())
+            {
+                return NotFound(new { message = $"Planeta {nome} não encontrado." });
+            }
+            return Ok(planetas);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreatePlanetaAsync([FromBody] PlanetaDTO request)
+        {
+            bool planetaExiste = await _planetaService.DoesPlanetaExistsAsync(request.Nome);
+            if (planetaExiste)
+            {
+                return Conflict(new { message = $"O planeta {request.Nome} já existe." });
+            }
+            var planeta = await _planetaService.CreatePlanetaAsync(request);
+            return CreatedAtAction("GetPlanetaPorId",new { id = planeta.Id },planeta);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdatePlaneta(int id,[FromBody] PlanetaUpdateDTO request)
+        {
+            var planeta = await _planetaService.UpdatePlanetaAsync(id,request);
+            if (planeta == null)
+            {
+                return NotFound(new { message = $"Planeta com o id-{id} não encontrado." });
+            }
+            return Ok(planeta);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePlaneta(int id)
+        {
+            var planetaApagado = await _planetaService.DeletePlanetaAsync(id);
+            if (!planetaApagado)
+            {
+                return NotFound(new { message = $"Planeta com o id-{id} não encontrado." });
+            }
+            return NoContent();
+        }
     }
 }
