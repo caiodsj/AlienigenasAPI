@@ -62,7 +62,7 @@ namespace AlienigenasAPI.Services
                 Altura = request.Altura,
                 Idade = request.Idade,
                 CorpoDescricao = request.CorpoDescricao,
-                EstaNaTerra = request.EstaNaTerra,
+                EstaNaTerra = false,
                 PlanetaOrigemId = request.PlanetaOrigemId,
             };
             alien.PoderesAlien = request.Poderes
