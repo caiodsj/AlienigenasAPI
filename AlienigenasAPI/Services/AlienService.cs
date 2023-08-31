@@ -84,7 +84,6 @@ namespace AlienigenasAPI.Services
             alien.Altura = request.Altura;
             alien.Idade = request.Idade;
             alien.CorpoDescricao = request.CorpoDescricao;
-            alien.EstaNaTerra = request.EstaNaTerra;
             alien.PlanetaOrigemId = request.PlanetaOrigemId;
 
             var poderesAlien = alien.PoderesAlien.ToList();
