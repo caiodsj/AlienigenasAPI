@@ -8,6 +8,7 @@
         public int Idade { get; set; }
         public string CorpoDescricao { get; set; }
         public int PlanetaOrigemId { get; set; }
+
         public ICollection<int> Poderes { get; set; }
     }
 }

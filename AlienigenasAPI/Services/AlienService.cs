@@ -35,7 +35,7 @@ namespace AlienigenasAPI.Services
         public async Task<PoderAlien?> AddPoderAlien(int idAlien, int idPoder)
         {
             var poderAlien = await _dataContext.PoderesAliens.FindAsync(idAlien, idPoder);
-            if (poderAlien != null) return null;
+            if (poderAlien is not null) return null;
 
             poderAlien = new PoderAlien{ AlienId = idAlien, PoderId = idPoder };
 
@@ -47,7 +47,7 @@ namespace AlienigenasAPI.Services
         public async Task<PoderAlien?> RemovePoderAlien(int idAlien, int idPoder)
         {
             var poderAlien = await _dataContext.PoderesAliens.FindAsync(idAlien, idPoder);
-            if (poderAlien == null) return null;
+            if (poderAlien is null) return null;
 
             _dataContext.PoderesAliens.Remove(poderAlien);
             await _dataContext.SaveChangesAsync();
@@ -65,9 +65,10 @@ namespace AlienigenasAPI.Services
                 EstaNaTerra = false,
                 PlanetaOrigemId = request.PlanetaOrigemId,
             };
-            alien.PoderesAlien = request.Poderes
+            var poderesAlien = request.Poderes
                 .Select(id => new PoderAlien{ AlienId = alien.Id, PoderId = id })
                 .ToList();
+            alien.PoderesAlien = poderesAlien;
 
             await _dataContext.Aliens.AddAsync(alien);
             await _dataContext.SaveChangesAsync();
@@ -100,7 +101,7 @@ namespace AlienigenasAPI.Services
         public async Task<Alien?> RemoveAlien(int id)
         {
             var alien = await _dataContext.Aliens.FindAsync(id);
-            if (alien == null) return null;
+            if (alien is null) return null;
 
             _dataContext.Aliens.Remove(alien);
             await _dataContext.SaveChangesAsync();
