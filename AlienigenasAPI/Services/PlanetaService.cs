@@ -24,12 +24,12 @@ namespace AlienigenasAPI.Services
             return await _dataContext.Planetas.FindAsync(id);
         }
 
-        public async Task<List<Planeta>> GetAllPlanetasPorNomeAsync(string nome)
+        public async Task<Planeta> GetPlanetaPorNomeAsync(string nome)
         {
-            var planetas = await _dataContext.Planetas
+            var planeta = await _dataContext.Planetas
                 .Where(p => p.Nome.Contains(nome))
-                .ToListAsync();
-            return planetas;
+                .FirstOrDefaultAsync();
+            return planeta;
         }
 
         public async Task<bool> DoesPlanetaExistsAsync(string nome)

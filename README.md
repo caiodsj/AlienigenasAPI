@@ -72,7 +72,7 @@ AlienigenasAPI é uma API REST desenvolvida em .NET 7.0 para gerenciar informaç
 
 - `GET /api/planetas`: Retorna todos os planetas existentes.
 - `GET /api/planetas/{id}`: Retorna um planeta específico com base no ID.
-- `GET /api/planetas/nome/{nome}`: Retorna todos os planetas com um nome específico.
+- `GET /api/planetas/nome/{nome}`: Retorna o planeta com um nome específico.
 - `POST /api/planetas`: Cria um novo planeta.
 - `PUT /api/planetas/{id}`: Atualiza um planeta específico com base no ID.
 - `DELETE /api/planetas/{id}`: Remove um planeta específico com base no ID.
