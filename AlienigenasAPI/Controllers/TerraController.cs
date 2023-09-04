@@ -35,9 +35,9 @@ namespace AlienigenasAPI.Controllers
         }
 
         [HttpGet("BuscarAliensPorPlanetaId/{planetaId}")]
-        public async Task<ActionResult<List<Alien>>> GetAlienNaTerraPorId(int id)
+        public async Task<ActionResult<List<Alien>>> GetAllAliensPorPlaneta(int planetaId)
         {
-            var aliens = await _terraService.GetAllAliensPorPlaneta(id);
+            var aliens = await _terraService.GetAllAliensPorPlaneta(planetaId);
 
             if (aliens is null) { return BadRequest($"Não existe nenhum visitante desse planeta na Terra"); }
 
