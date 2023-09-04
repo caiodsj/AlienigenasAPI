@@ -18,7 +18,7 @@ namespace AlienigenasAPI.Controllers
         public async Task<IActionResult> GetAllPlanetas()
         {
             var planetas = await _planetaService.GetAllPlanetasAsync();
-            if (planetas == null || !planetas.Any())
+            if (planetas is null || !planetas.Any())
             {
                 return NotFound();
             }
@@ -29,7 +29,7 @@ namespace AlienigenasAPI.Controllers
         public async Task<IActionResult> GetPlanetaPorId(int id)
         {
             var planeta = await _planetaService.GetPlanetaPorIdAsync(id);
-            if (planeta == null)
+            if (planeta is null)
             {
                 return NotFound(new { message = $"Planeta com o id-{id} não encontrado." });
 
@@ -38,10 +38,10 @@ namespace AlienigenasAPI.Controllers
         }
 
         [HttpGet("nome/{nome}")]
-        public async Task<IActionResult> GetAllPlanetasPorNome(string nome)
+        public async Task<IActionResult> GetPlanetaPorNome(string nome)
         {
-            var planetas = await _planetaService.GetAllPlanetasPorNomeAsync(nome);
-            if (planetas == null || !planetas.Any())
+            var planetas = await _planetaService.GetPlanetaPorNomeAsync(nome);
+            if (planetas is null)
             {
                 return NotFound(new { message = $"Planeta {nome} não encontrado." });
             }
@@ -64,7 +64,7 @@ namespace AlienigenasAPI.Controllers
         public async Task<IActionResult> UpdatePlaneta(int id,[FromBody] PlanetaUpdateDTO request)
         {
             var planeta = await _planetaService.UpdatePlanetaAsync(id,request);
-            if (planeta == null)
+            if (planeta is null)
             {
                 return NotFound(new { message = $"Planeta com o id-{id} não encontrado." });
             }
